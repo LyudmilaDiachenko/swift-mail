@@ -1,13 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+ul{
+  list-style-type: none;
+}
+.App{
+  display: flex;
+}
+.left-panel{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+.right-panel{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.write-letter{
+  margin: 20px;
+  padding: 10px;
+}
+.list{
+  margin-left: 20px;
+}
+.search{
+    margin: 20px 0;
+    padding: 10px;
+}
+.mail-list-item{
+  display: flex;
+  padding: 7px 0;
+  background-color: #dfe6ec;
+  margin-bottom: 5px;
+}
+.mail-sender{
+  width: 20%;
+}
+.mail-header{
+  width: 70%;
+}
+.mail-date{
+  width: 10%;
+}
+/* .email-form{
+  display: none;
+} */
