@@ -1,31 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
-function WriteLetter({isOpen, setIsOpen}) {
-
+function WriteLetter({isOpen}) {
   return (
-  <div className="left-panel">
-    <button className="write-letter"
-        onClick={() => setIsOpen(!isOpen)}
-        >Написати листа</button>
-    {isOpen && (
-        <form className="email-form">
-            <span>Нове повідомлення</span>
-            <label>
-                Кому:
-                <input type="text" name="recipient" placeholder="Email отримувача" />
-            </label>  
-            <label>
-                Тема:
-                <input type="text" name="title" placeholder="Тема листа" />
-            </label>
-            <label>
-                Повідомлення:
-                <textarea name="message" placeholder="Ваш текст"></textarea>
-            </label>  
-            <button type="submit">Відправити</button>
-        </form>
+    <>
+        {isOpen && (
+            <form className="email-form">
+                <span>Нове повідомлення</span>
+                <label className="field-label">
+                    Кому:
+                    <input type="text" name="recipient" />
+                </label>  
+                <label className="field-label">
+                    Тема:
+                    <input type="text" name="title" />
+                </label>
+                <label className="message-label">
+                    <textarea></textarea>
+                </label>
+                <div className="form-btn">
+                    <button type="submit" className="submit-btn">Надіслати</button>
+                </div>
+            </form>
     )}
-  </div>
+    </>
 )}
 
 export default WriteLetter;

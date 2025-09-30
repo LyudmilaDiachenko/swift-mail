@@ -34,7 +34,7 @@ function App() {
   ];
   return (
     <div className="App">
-      <LeftPanel {...{setIsOpen}}/>
+      <LeftPanel {...{isOpen, setIsOpen}}/>
       <WriteLetter {...{isOpen, setIsOpen}}/>
       <RightPanel {...{mails}} />
     </div>
