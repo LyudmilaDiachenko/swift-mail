@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import './App.css';
 import LeftPanel from './js/leftPanel';
-import RightPanel from './js/rightPanel';
+import EmailList from './js/emailList';
+import ViewEmail from './js/viewEmail';
 import WriteLetter from "./js/writeLetter";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentEmailId, setCurrentEmailId] = useState(null);
   const mails = [
     {
       id: 1,
@@ -34,9 +36,13 @@ function App() {
   ];
   return (
     <div className="App">
-      <LeftPanel {...{isOpen, setIsOpen}}/>
+      <LeftPanel {...{isOpen, setIsOpen, setCurrentEmailId}}/>
+      {
+        currentEmailId ?
+        <ViewEmail {...{mails, currentEmailId, setCurrentEmailId}} />:
+        <EmailList {...{mails, setCurrentEmailId}} />
+      }
       <WriteLetter {...{isOpen, setIsOpen}}/>
-      <RightPanel {...{mails}} />
     </div>
   );
 }
