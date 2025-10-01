@@ -1,9 +1,9 @@
 import React from "react";
 
-function WriteLetter({isOpen}) {
+function WriteLetter({newLetter}) {
   return (
     <>
-        {isOpen && (
+        {newLetter && (
             <form className="email-form">
                 <span>Нове повідомлення</span>
                 <label className="field-label">
@@ -15,7 +15,7 @@ function WriteLetter({isOpen}) {
                     <input type="text" name="title" />
                 </label>
                 <label className="message-label">
-                    <textarea></textarea>
+                    <textarea placeholder="Повідомлення:"></textarea>
                 </label>
                 <div className="form-btn">
                     <button type="submit" className="submit-btn">Надіслати</button>

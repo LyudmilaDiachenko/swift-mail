@@ -36,6 +36,9 @@ ul{
 .list{
   margin-left: 20px;
 }
+.list li{
+  line-height: 2em;
+}
 .search{
     margin: 20px 0;
     padding: 10px;
@@ -74,8 +77,9 @@ ul{
 }
 .email-form span{
   width: 100%;
-  padding: 10px 0;
+  padding: 10px 0 10px 5px;
   background-color: rgb(210 229 234);
+  margin-bottom: 10px;
 }
 .email-form .field-label{
   width: 100%;
@@ -111,4 +115,18 @@ ul{
 .submit-btn{
   padding: 10px 20px;
   margin: 0 auto;
+}
+.view-letter{
+  width: 100%;  
+}
+.view-box{
+  background-color: rgb(228 239 242);
+  width: 98%;
+  height: 85vh;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.view-header{
+  line-height: 2em;
 }

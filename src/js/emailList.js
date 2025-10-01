@@ -1,13 +1,13 @@
 import React from "react";
+import Search from "./search";
 
-function EmailList({mails, setCurrentEmailId}) {
+function EmailList({mails, setCurrentEmailId, emailStatus}) {
+    const filterStatus = mails.filter(e => e.typeStatus === emailStatus)
     return (
         <div className="right-panel">
-            <label htmlFor="">
-                <input type="text" placeholder="Пошук" className="search" />
-            </label>
+            < Search />
             <ul className="mail-list">
-                {mails.sort((a, b) => a.date < b.date? 1 : -1).map((e, i)=>
+                {filterStatus.sort((a, b) => a.date < b.date? 1 : -1).map((e, i)=>
                     <li className="mail-list-item" key={e.id} onClick={_=>setCurrentEmailId(e.id)}>
                         <span className="mail-sender">{e.sender}</span>
                         <span className="mail-header">{e.title}</span>
