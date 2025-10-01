@@ -8,7 +8,7 @@ import WriteLetter from "./js/writeLetter";
 function App() {
   const [newLetter, setNewLetter] = useState(false);
   const [currentEmailId, setCurrentEmailId] = useState(null);
-  const [emailStatus, setEmailStatus] = useState('incoming');
+  const [currentStatus, setCurrentStatus] = useState('inbox');
   const mails = [
     {
       id: 1,
@@ -16,7 +16,7 @@ function App() {
       email: "anna.smith@example.com",
       title: "Meeting tomorrow",
       description: "Don't forget about our meeting at 10am.",
-      typeStatus: 'incoming',
+      status: 'inbox',
       isRead: false,
       date: "2025-09-25T09:30:00"
     },
@@ -26,7 +26,7 @@ function App() {
       email: "john.doe@example.com",
       title: "Project update",
       description: "The latest report is ready for review.",
-      typeStatus: 'incoming',
+      status: 'inbox',
       isRead: true,
       date: "2025-09-24T16:45:00"
     },
@@ -36,18 +36,18 @@ function App() {
       email: "emma.johnson@example.com",
       title: "Party invitation",
       description: "You are invited to my birthday party this weekend.",
-      typeStatus: 'sent',
+      status: 'sent',
       isRead: false,
       date: "2025-09-26T18:00:00"
     }
   ];
   return (
     <div className="App">
-      <LeftPanel {...{newLetter, setNewLetter, setCurrentEmailId, setEmailStatus}}/>
+      <LeftPanel {...{mails, newLetter, setNewLetter, setCurrentEmailId, setCurrentStatus}}/>
       {
         currentEmailId ?
         <ViewEmail {...{mails, currentEmailId, setCurrentEmailId}} />:
-        <EmailList {...{mails, setCurrentEmailId, emailStatus}} />
+        <EmailList {...{mails, setCurrentEmailId, currentStatus}} />
       }
       <WriteLetter {...{newLetter, setNewLetter}}/>
     </div>

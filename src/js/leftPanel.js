@@ -1,7 +1,7 @@
 import React from "react";
 import WriteLetter from "./writeLetter";
 
-function LeftPanel({newLetter, setNewLetter, setEmailStatus}) {
+function LeftPanel({mails, newLetter, setNewLetter, setCurrentStatus}) {
   return (
     <div className="left-panel">
       <button className="write-letter">
@@ -13,10 +13,10 @@ function LeftPanel({newLetter, setNewLetter, setEmailStatus}) {
           >Написати листа
       </button>
       <ul className="list">
-          <li onClick={() => setEmailStatus('incoming')}>Вхідні</li>
-          <li onClick={() => setEmailStatus('sent')}>Надіслані</li>
-          <li>Спам</li>
-          <li>Чернетки</li>
+          <li onClick={() => setCurrentStatus('inbox')}>Вхідні ({mails.filter(e=>e.status==='inbox').length})</li>
+          <li onClick={() => setCurrentStatus('sent')}>Надіслані ({mails.filter(e=>e.status==='sent').length})</li>
+          <li onClick={() => setCurrentStatus('spam')}>Спам ({mails.filter(e=>e.status==='spam').length})</li>
+          <li onClick={() => setCurrentStatus('draft')}>Чернетки ({mails.filter(e=>e.status==='draft').length})</li>
       </ul>
     </div>
   )

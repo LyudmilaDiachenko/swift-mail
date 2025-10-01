@@ -1,8 +1,8 @@
 import React from "react";
 import Search from "./search";
 
-function EmailList({mails, setCurrentEmailId, emailStatus}) {
-    const filterStatus = mails.filter(e => e.typeStatus === emailStatus)
+function EmailList({mails, setCurrentEmailId, currentStatus}) {
+    const filterStatus = mails.filter(e => e.status === currentStatus)
     return (
         <div className="right-panel">
             < Search />
