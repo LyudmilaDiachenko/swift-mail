@@ -1,22 +1,21 @@
 import React from "react";
-import WriteLetter from "./writeLetter";
+import WriteLetter from "./newLetter";
 
-function LeftPanel({mails, newLetter, setNewLetter, setCurrentStatus}) {
+function LeftPanel({mails, setCurrentDraftId, setCurrentStatus}) {
   return (
     <div className="left-panel">
       <button className="write-letter">
         Отримати листа
       </button>
-      <WriteLetter />
       <button className="write-letter"
-          onClick={() => setNewLetter(!newLetter)}
+          onClick={() => setCurrentDraftId(0)}
           >Написати листа
       </button>
       <ul className="list">
-          <li onClick={() => setCurrentStatus('inbox')}>Вхідні ({mails.filter(e=>e.status==='inbox').length})</li>
-          <li onClick={() => setCurrentStatus('sent')}>Надіслані ({mails.filter(e=>e.status==='sent').length})</li>
-          <li onClick={() => setCurrentStatus('spam')}>Спам ({mails.filter(e=>e.status==='spam').length})</li>
-          <li onClick={() => setCurrentStatus('draft')}>Чернетки ({mails.filter(e=>e.status==='draft').length})</li>
+          <li onClick={() => setCurrentStatus('inbox')}>Вхідні ({mails.filter(e=>e?.status==='inbox').length})</li>
+          <li onClick={() => setCurrentStatus('sent')}>Надіслані ({mails.filter(e=>e?.status==='sent').length})</li>
+          <li onClick={() => setCurrentStatus('spam')}>Спам ({mails.filter(e=>e?.status==='spam').length})</li>
+          <li onClick={() => setCurrentStatus('draft')}>Чернетки ({mails.filter(e=>e?.status==='draft').length})</li>
       </ul>
     </div>
   )

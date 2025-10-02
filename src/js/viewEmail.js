@@ -2,7 +2,7 @@ import React from "react";
 import Search from "./search";
 
 function EmailList({mails, currentEmailId, setCurrentEmailId}) {
-    const email = mails.filter(e => e.id === currentEmailId)[0]
+    const email = mails.filter(e => e?.id === currentEmailId)[0]
 
     return (
         <div className="view-letter">
