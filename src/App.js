@@ -3,13 +3,13 @@ import './App.css';
 import LeftPanel from './js/leftPanel';
 import EmailList from './js/emailList';
 import ViewEmail from './js/viewEmail';
-import WriteLetter from "./js/writeLetter";
+import NewLetter from "./js/newLetter";
 
 function App() {
-  const [newLetter, setNewLetter] = useState(false);
   const [currentEmailId, setCurrentEmailId] = useState(null);
+  const [currentDraftId, setCurrentDraftId] = useState(null);
   const [currentStatus, setCurrentStatus] = useState('inbox');
-  const mails = [
+  const [mails, setMails] = useState([
     {
       id: 1,
       sender: "Anna Smith",
@@ -70,16 +70,17 @@ function App() {
     isRead: false,
     date: "2025-09-28T07:10:00"
   }
-  ];
+  ]);
+
   return (
     <div className="App">
-      <LeftPanel {...{mails, newLetter, setNewLetter, setCurrentEmailId, setCurrentStatus}}/>
+      <LeftPanel {...{mails, setCurrentDraftId, setCurrentEmailId, setCurrentStatus}}/>
       {
         currentEmailId ?
         <ViewEmail {...{mails, currentEmailId, setCurrentEmailId}} />:
         <EmailList {...{mails, setCurrentEmailId, currentStatus}} />
       }
-      <WriteLetter {...{newLetter, setNewLetter}}/>
+      {currentDraftId !== null && <NewLetter {...{mails, setMails, setCurrentDraftId}} />}
     </div>
   );
 }
