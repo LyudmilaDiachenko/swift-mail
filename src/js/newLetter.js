@@ -5,6 +5,11 @@ function WriteLetter({mails, setMails, setCurrentDraftId}) {
     function getAutoIncrement(){
         return mails.reduce((acc, e) => e?.id > acc ? e?.id : acc, 0) + 1
     }
+    function sendEmail(){
+        let newMail = {...mail}
+        newMail.status = 'sent'
+        saveDraft(newMail)
+    }
     function emailChange(eve){
         let newMail = {...mail}
         newMail.email = eve.target.value
@@ -23,6 +28,7 @@ function WriteLetter({mails, setMails, setCurrentDraftId}) {
     function saveDraft(newMail){
         newMail.id = newMail.id || getAutoIncrement()
         newMail.status = newMail.status || 'draft'
+        newMail.date = newMail.date || new Date().toISOString()
         setMail(newMail)
         
         const mailId = mails.filter(e=>e?.id === newMail?.id)[0]?.id
@@ -57,7 +63,7 @@ function WriteLetter({mails, setMails, setCurrentDraftId}) {
                 </textarea>
             </label>
             <div className="form-btn">
-                <button type="button" className="submit-btn">Надіслати</button>
+                <button type="button" className="submit-btn" onClick={_=>sendEmail() || setCurrentDraftId(null)}>Надіслати</button>
                 <button type="button" className="submit-btn" onClick={_=>setCurrentDraftId(null)}>Відмінити</button>                
             </div>
         </form>
