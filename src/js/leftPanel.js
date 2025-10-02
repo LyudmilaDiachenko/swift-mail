@@ -67,7 +67,7 @@ function LeftPanel({mails, setMails, setCurrentDraftId, setCurrentEmailId, setCu
   return (
     <div className="left-panel">
       <button className="write-letter" onClick={checkEmails}>
-        Отримати листа
+        Перевірити пошту
       </button>
       <button className="write-letter"
           onClick={() => setCurrentDraftId(0)}
