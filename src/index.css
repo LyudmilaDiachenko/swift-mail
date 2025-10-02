@@ -18,6 +18,8 @@ ul{
 }
 .App{
   display: flex;
+  margin: 25px;
+  box-sizing: border-box;
 }
 .left-panel{
   display: flex;
@@ -30,11 +32,11 @@ ul{
   width: 80%;
 }
 .write-letter{
-  margin: 20px;
+  margin: 20px 20px 0 0;
   padding: 10px;
 }
 .list{
-  margin-left: 20px;
+margin-top: 20px;
 }
 .list li{
   line-height: 2em;
@@ -51,6 +53,7 @@ ul{
 }
 .mail-sender{
   width: 20%;
+  margin-left: 10px;
 }
 .mail-header{
   width: 70%;

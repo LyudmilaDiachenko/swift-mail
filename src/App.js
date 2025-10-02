@@ -39,7 +39,37 @@ function App() {
       status: 'sent',
       isRead: false,
       date: "2025-09-26T18:00:00"
-    }
+    },
+    {
+    id: 4,
+    sender: "Lottery Winner",
+    email: "lottery@fakeprizes.com",
+    title: "You won $1,000,000!",
+    description: "Claim your prize now by clicking the link below.",
+    status: "spam",
+    isRead: false,
+    date: "2025-09-27T08:45:00"
+  },
+  {
+    id: 5,
+    sender: "Unknown Sender",
+    email: "offer@superdealz.biz",
+    title: "Exclusive offer just for you!",
+    description: "Buy 1 get 5 free! Limited time only.",
+    status: "spam",
+    isRead: true,
+    date: "2025-09-27T12:20:00"
+  },
+  {
+    id: 6,
+    sender: "Bank Support",
+    email: "support@secure-bank-login.net",
+    title: "Urgent: Verify your account",
+    description: "Your account has been locked. Click here to unlock.",
+    status: "spam",
+    isRead: false,
+    date: "2025-09-28T07:10:00"
+  }
   ];
   return (
     <div className="App">
