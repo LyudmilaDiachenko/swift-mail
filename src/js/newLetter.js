@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 
-function WriteLetter({mails, setMails, setCurrentDraftId}) {
+function WriteLetter({mails, setMails, getAutoIncrement, setCurrentDraftId}) {
     const [mail, setMail] = useState({})
-    function getAutoIncrement(){
-        return mails.reduce((acc, e) => e?.id > acc ? e?.id : acc, 0) + 1
-    }
     function sendEmail(){
         let newMail = {...mail}
         newMail.status = 'sent'

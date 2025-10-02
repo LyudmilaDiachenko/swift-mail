@@ -71,16 +71,21 @@ function App() {
     date: "2025-09-28T07:10:00"
   }
   ]);
+  
+  function getAutoIncrement(){
+    return mails.reduce((acc, e) => e?.id > acc ? e?.id : acc, 0) + 1
+  }
+
 
   return (
     <div className="App">
-      <LeftPanel {...{mails, setCurrentDraftId, setCurrentEmailId, setCurrentStatus}}/>
+      <LeftPanel {...{mails, setMails, getAutoIncrement, setCurrentDraftId, setCurrentEmailId, setCurrentStatus}}/>
       {
         currentEmailId ?
         <ViewEmail {...{mails, currentEmailId, setCurrentEmailId}} />:
         <EmailList {...{mails, setCurrentEmailId, currentStatus}} />
       }
-      {currentDraftId !== null && <NewLetter {...{mails, setMails, setCurrentDraftId}} />}
+      {currentDraftId !== null && <NewLetter {...{mails, setMails, getAutoIncrement, setCurrentDraftId}} />}
     </div>
   );
 }
