@@ -4,11 +4,13 @@ import LeftPanel from './js/leftPanel';
 import EmailList from './js/emailList';
 import ViewEmail from './js/viewEmail';
 import NewLetter from "./js/newLetter";
+import TextFilter from "./js/textFilter";
 
 function App() {
   const [currentEmailId, setCurrentEmailId] = useState(null);
   const [currentDraftId, setCurrentDraftId] = useState(null);
   const [currentStatus, setCurrentStatus] = useState('inbox');
+  const [searchRequest, setSearchRequest] = useState('')
   const [mails, setMails] = useState([
     {
       id: 1,
@@ -76,15 +78,15 @@ function App() {
     return mails.reduce((acc, e) => e?.id > acc ? e?.id : acc, 0) + 1
   }
 
-
   return (
     <div className="App">
       <LeftPanel {...{mails, setMails, getAutoIncrement, setCurrentDraftId, setCurrentEmailId, setCurrentStatus}}/>
       {
         currentEmailId ?
         <ViewEmail {...{mails, currentEmailId, setCurrentEmailId}} />:
-        <EmailList {...{mails, setCurrentEmailId, currentStatus}} />
+        <EmailList {...{mails, setCurrentEmailId, currentStatus, searchRequest}} />
       }
+      <TextFilter {...{searchRequest, setSearchRequest, setCurrentEmailId}} />
       {currentDraftId !== null && <NewLetter {...{mails, setMails, getAutoIncrement, setCurrentDraftId}} />}
     </div>
   );

@@ -1,5 +1,4 @@
 import React from "react";
-import Search from "./search";
 import { PiKeyReturnBold } from "react-icons/pi";
 
 function EmailList({mails, currentEmailId, setCurrentEmailId}) {
@@ -7,7 +6,6 @@ function EmailList({mails, currentEmailId, setCurrentEmailId}) {
 
     return (
         <div className="view-letter">
-            <Search />
             <div className="view-box">
                 <div className="header-container">
                     <div className="view-header">
