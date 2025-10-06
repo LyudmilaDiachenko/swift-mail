@@ -40,6 +40,7 @@ margin-top: 20px;
 }
 .list li{
   line-height: 2em;
+  cursor: pointer;
 }
 .search{
     margin: 20px 0;
@@ -130,6 +131,28 @@ margin-top: 20px;
   padding: 20px;
   box-sizing: border-box;
 }
+.header-container{
+  display: flex;
+  justify-content: space-between;
+}
 .view-header{
   line-height: 2em;
+}
+.return-icon{
+  width: 30px;
+  height: 30px;
+}
+.view-header p{
+  font-size: 1.4em;
+}
+.view-header span a{
+  font-size: 0.8em;
+}
+.view-description{
+  width: 100%;
+  background-color: rgb(241 246 248);
+  margin: 20px 0;
+  min-height: 80%;
+  padding: 10px 10px;
+  box-sizing: border-box;
 }
