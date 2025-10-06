@@ -81,13 +81,15 @@ function App() {
   return (
     <div className="App">
       <LeftPanel {...{mails, setMails, getAutoIncrement, setCurrentDraftId, setCurrentEmailId, setCurrentStatus}}/>
-      {
-        currentEmailId ?
-        <ViewEmail {...{mails, currentEmailId, setCurrentEmailId}} />:
-        <EmailList {...{mails, setCurrentEmailId, currentStatus, searchRequest}} />
-      }
-      <TextFilter {...{searchRequest, setSearchRequest, setCurrentEmailId}} />
-      {currentDraftId !== null && <NewLetter {...{mails, setMails, getAutoIncrement, setCurrentDraftId}} />}
+      <div className="right-panel">      
+        <TextFilter {...{searchRequest, setSearchRequest, setCurrentEmailId}} />
+        {
+          currentEmailId ?
+          <ViewEmail {...{mails, currentEmailId, setCurrentEmailId}} />:
+          <EmailList {...{mails, setCurrentEmailId, currentStatus, searchRequest}} />
+        }
+        {currentDraftId !== null && <NewLetter {...{mails, setMails, getAutoIncrement, setCurrentDraftId}} />}
+      </div>
     </div>
   );
 }
