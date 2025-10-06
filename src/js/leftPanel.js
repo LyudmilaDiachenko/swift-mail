@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function LeftPanel({mails, setMails, setCurrentDraftId, setCurrentEmailId, currentStatus, setCurrentStatus, getAutoIncrement}) {
   let example = {
@@ -29,6 +29,11 @@ function LeftPanel({mails, setMails, setCurrentDraftId, setCurrentEmailId, curre
     ],
   }
 
+  useEffect(_ => {
+    Array(10).fill().forEach(_ => getNewEmail())
+    setInterval(_ => checkEmails(), 10000)
+  }, [])
+
   function checkEmails(){
     return Math.random() > 0.5 ? getNewEmail() : null 
   }
@@ -36,8 +41,7 @@ function LeftPanel({mails, setMails, setCurrentDraftId, setCurrentEmailId, curre
   function getNewEmail(){
     let status = Math.random() > 0.3 ? 'inbox' : 'spam'
     let sender = checkSender()
-
-    setMails([...mails, {
+    mails.push({
       id: getAutoIncrement(),
       sender: sender,
       email: (sender + "@example.com").toLowerCase().replace(" ",'.'),
@@ -46,7 +50,8 @@ function LeftPanel({mails, setMails, setCurrentDraftId, setCurrentEmailId, curre
       status: status,
       isRead: false,
       date: new Date().toISOString() 
-    }])
+    })
+    setMails([...mails])
   }
   function checkSender(){
     return example.sender[Math.floor(Math.random() * example.sender.length)]
