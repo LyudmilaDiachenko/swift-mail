@@ -1,6 +1,6 @@
 import React from "react";
 
-function LeftPanel({mails, setMails, setCurrentDraftId, setCurrentEmailId, setCurrentStatus, getAutoIncrement}) {
+function LeftPanel({mails, setMails, setCurrentDraftId, setCurrentEmailId, currentStatus, setCurrentStatus, getAutoIncrement}) {
   let example = {
     inbox: `
       Can we have a 15-min sync tomorrow to align on the Q4 milestones? I have a couple of updates to share.
@@ -74,10 +74,14 @@ function LeftPanel({mails, setMails, setCurrentDraftId, setCurrentEmailId, setCu
           >Написати листа
       </button>
       <ul className="list">
-          <li onClick={() => setCurrentStatus('inbox') || setCurrentEmailId(null)}>Вхідні ({mails.filter(e=>e?.status==='inbox').length})</li>
-          <li onClick={() => setCurrentStatus('sent') || setCurrentEmailId(null)}>Надіслані ({mails.filter(e=>e?.status==='sent').length})</li>
-          <li onClick={() => setCurrentStatus('spam') || setCurrentEmailId(null)}>Спам ({mails.filter(e=>e?.status==='spam').length})</li>
-          <li onClick={() => setCurrentStatus('draft') || setCurrentEmailId(null)}>Чернетки ({mails.filter(e=>e?.status==='draft').length})</li>
+          <li className={currentStatus === 'inbox' ? 'active' : ''}
+          onClick={() => setCurrentStatus('inbox') || setCurrentEmailId(null)}>Вхідні ({mails.filter(e=>e?.status==='inbox').length})</li>
+          <li className={currentStatus === 'sent' ? 'active' : ''}
+          onClick={() => setCurrentStatus('sent') || setCurrentEmailId(null)}>Надіслані ({mails.filter(e=>e?.status==='sent').length})</li>
+          <li className={currentStatus === 'spam' ? 'active' : ''}
+          onClick={() => setCurrentStatus('spam') || setCurrentEmailId(null)}>Спам ({mails.filter(e=>e?.status==='spam').length})</li>
+          <li className={currentStatus === 'draft' ? 'active' : ''}
+          onClick={() => setCurrentStatus('draft') || setCurrentEmailId(null)}>Чернетки ({mails.filter(e=>e?.status==='draft').length})</li>
       </ul>
     </div>
   )

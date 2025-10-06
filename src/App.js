@@ -80,7 +80,7 @@ function App() {
 
   return (
     <div className="App">
-      <LeftPanel {...{mails, setMails, getAutoIncrement, setCurrentDraftId, setCurrentEmailId, setCurrentStatus}}/>
+      <LeftPanel {...{mails, setMails, getAutoIncrement, setCurrentDraftId, setCurrentEmailId, currentStatus, setCurrentStatus}}/>
       <div className="right-panel">      
         <TextFilter {...{searchRequest, setSearchRequest, setCurrentEmailId}} />
         {
