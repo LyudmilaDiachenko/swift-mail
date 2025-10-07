@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function LeftPanel({mails, setMails, setCurrentDraftId, setCurrentEmailId, currentStatus, setCurrentStatus, getAutoIncrement}) {
   let example = {
@@ -29,10 +29,16 @@ function LeftPanel({mails, setMails, setCurrentDraftId, setCurrentEmailId, curre
     ],
   }
 
+  const [rand, setRand] = useState(0)
+
   useEffect(_ => {
     Array(10).fill().forEach(_ => getNewEmail())
-    setInterval(_ => checkEmails(), 10000)
+    setInterval(_ => setRand(Math.random()), 10000)
   }, [])
+
+  useEffect(_ => {
+    checkEmails()
+  }, [rand])
 
   function checkEmails(){
     return Math.random() > 0.5 ? getNewEmail() : null 
