@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PiKeyReturnBold } from "react-icons/pi";
 
-function EmailList({mails, currentEmailId, setCurrentEmailId}) {
+function ViewEmail({mails, currentEmailId, setCurrentEmailId, setMails}) {
     const email = mails.filter(e => e?.id === currentEmailId)[0]
+    
+    useEffect(_ => {
+        email.isRead = true
+        setMails([...mails])
+    }, [])
 
     return (
         <div className="view-letter">
@@ -24,4 +29,4 @@ function EmailList({mails, currentEmailId, setCurrentEmailId}) {
     )
 }
 
-export default EmailList;
+export default ViewEmail;

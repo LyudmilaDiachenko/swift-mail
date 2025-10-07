@@ -19,7 +19,7 @@ function App() {
       title: "Meeting tomorrow",
       description: "Don't forget about our meeting at 10am.",
       status: 'inbox',
-      isRead: false,
+      isRead: true,
       date: "2025-09-25T09:30:00"
     },
     {
@@ -85,7 +85,7 @@ function App() {
         <TextFilter {...{searchRequest, setSearchRequest, setCurrentEmailId}} />
         {
           currentEmailId ?
-          <ViewEmail {...{mails, currentEmailId, setCurrentEmailId}} />:
+          <ViewEmail {...{mails, currentEmailId, setCurrentEmailId, setMails}} />:
           <EmailList {...{mails, setCurrentEmailId, currentStatus, searchRequest}} />
         }
         {currentDraftId !== null && <NewLetter {...{mails, setMails, getAutoIncrement, setCurrentDraftId}} />}
